@@ -1,0 +1,82 @@
+# DB
+create schema web_project_g21;
+use web_project_g21;
+
+# Lookup Tables
+CREATE TABLE LookupTypeSeason(
+    Season varchar(20) not null primary key);
+    INSERT INTO LookupTypeSeason(Season) VALUES ('אמצע'), ('סוף');
+
+CREATE TABLE LookupType(
+    Type varchar(20) not null primary key);
+    INSERT INTO LookupType(Type) VALUES ('אזורי'), ('ארצי');
+
+# Tournaments Table
+CREATE TABLE tournaments (
+  id int auto_increment primary key,
+  name varchar(255) not null ,
+  date date not null ,
+  location varchar(255) not null ,
+  type varchar(20) not null ,
+  Season varchar(20) not null ,
+  details varchar(255) not null ,
+  create_date timestamp default CURRENT_TIMESTAMP,
+
+  constraint FK_type FOREIGN KEY (type) REFERENCES LookupType (type),
+  constraint FK_Season FOREIGN KEY (Season) REFERENCES LookupTypeSeason (Season)
+);
+
+INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('מלכה','2022-02-02','באר שבע','אזורי','אמצע','פרטים');
+
+# Staff Table
+create table Staff (
+    id       int auto_increment,
+    first_name      varchar(100) not null,
+    last_name       varchar(100) not null,
+    email    varchar(100) not null,
+    phone    int          null,
+    role varchar(100) not null,
+    password varchar(100) not null,
+
+    constraint Staff_pk
+        primary key (id)
+);
+
+INSERT INTO staff(first_name, last_name, email, phone, role, password) VALUES ('נעמה', 'גרינוולד', 'naama.grinwald@gmail.com', 0505917191, 'מדריך', '1234');
+
+# Players Table
+create table Players (
+    id              int auto_increment,
+    first_name      varchar(100) not null,
+    last_name       varchar(100) not null,
+    level           int          not null,
+    age             int          not null,
+    school	 varchar(100) not null,
+
+    constraint Players_pk
+        primary key (id)
+);
+
+INSERT INTO Players(first_name, last_name, level, age, school) VALUES ('אלון', 'ברינה', 5 , 10, 'עמית');
+INSERT INTO Players(first_name, last_name, level, age, school) VALUES ('יעל', 'אליאס', 3 , 14 , 'ניצנים');
+
+# Game Scores Table
+CREATE TABLE GameScores(
+     id_tournament int not null,
+     Round int not null,
+     desk int not null,
+     id_player1 int not null,
+     id_player2 int not null,
+     score_player1 float not null,
+     score_player2 float not null,
+
+    constraint PK_tournments PRIMARY KEY (id_tournament,Round,desk),
+    constraint FK_tournament FOREIGN KEY (id_tournament) REFERENCES tournaments (id),
+    constraint FK_id_player1 FOREIGN KEY (id_player1) REFERENCES Players (id),
+    constraint FK_id_player2 FOREIGN KEY (id_player2) REFERENCES Players (id)
+);
+
+INSERT INTO GameScores(id_tournament,Round,desk,id_player1,id_player2,score_player1,score_player2) VALUES (1, 1, 4, 1, 2, 0.5, 0.5);
+
+# Many to Many Players-Tournment Table
+###########################
