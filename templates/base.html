@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    {% block page_head_css_extra %}{% endblock %}
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    {% block tohen %}{% endblock %}
+    {% include 'footer.html' %}
+</body>
+
+</html>
