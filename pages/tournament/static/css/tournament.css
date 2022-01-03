@@ -1,0 +1,40 @@
+.card {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding:3px;
+}
+
+.detail{
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 3px;
+    background-color: var(--primary-color);
+    width:350px;
+    height: 100px;
+    line-height: 0.01;
+    box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color);
+}
+
+/*responsive web */
+@media only screen and (max-width:600px) {
+
+.container {
+  display: block;
+  text-align: center;
+}
+
+.detail {
+    overflow-wrap: break-word;
+}
+
+}

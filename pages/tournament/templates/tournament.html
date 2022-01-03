@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+<!--title-->
+{% block title %} tournament {% endblock %}
+
+<!--extra css,js file-->
+{% block page_head_extra %}
+    <link rel="stylesheet" href="{{url_for('tournament.static' ,filename='css/tournament.css' )}}">
+    <script src="{{url_for('tournament.static', filename='js/tournament.js')}}"></script>
+{% endblock %}
+
+<!--tohen-->
+{% block tohen %}
+    {% include 'headline.html' %}
+    <div class="container">
+        <div class="detail">
+            <h5>שולחנות שנוקדו</h5>
+            <p>(query)</p>
+        </div>
+        <div class="detail">
+            <h5>מספר סבבים</h5>
+            <p>(query)</p>
+        </div>
+        <div class="detail">
+            <h5>חניכים משתתפים</h5>
+            <p>(query)</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card" onclick="location.href=''">
+            <h3>שיפוט</h3>
+        </div>
+        <div class="card" onclick="location.href=''">
+            <h3>תוצאות</h3>
+        </div>
+    </div>
+{% endblock %}

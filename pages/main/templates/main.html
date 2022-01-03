@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+<!--title-->
+{% block title %} main {% endblock %}
+
+<!--extra css,js file-->
+{% block page_head_extra %}
+    <link rel="stylesheet" href="{{url_for('main.static' ,filename='css/main.css' )}}">
+    <script src="{{url_for('main.static', filename='js/main.js')}}"></script>
+{% endblock %}
+
+<!--tohen-->
+{% block tohen %}
+   <h1>טורנירים</h1>
+    <div class="container">
+        <div class="card" onclick="location.href='tournament'">
+            <h5>טורניר מלכה</h5>
+            {{url_for('main.static', filename='main.css')}} שגיא<br>
+            {{url_for('main.static' ,filename='css/main.css')}} רועי
+        </div>
+        <div class="card" onclick="location.href='tournament'">
+            <h5>טורניר צריח</h5>
+        </div>
+    </div>
+{% endblock %}
