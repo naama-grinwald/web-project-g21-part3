@@ -10,4 +10,4 @@ default = Blueprint('default', __name__,
 # Routes
 @default.route('/default')
 def default_func():
-    return render_template('tournament.html')
+    return render_template('default.html')
