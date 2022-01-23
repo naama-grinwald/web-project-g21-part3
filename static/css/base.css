@@ -62,7 +62,7 @@ p{
 }
 
 /* Card div */
-.card, button {
+.card{
     background-color: var(--button-color);
     cursor: pointer;
     margin: 10px 10px;
@@ -74,7 +74,62 @@ p{
     border: 1px solid var(--primary-color);
 }
 
-.card:hover, button:hover {
+.card:hover {
     background-color: var(--button-hover-color);
 }
+
+/* Form */
+input {
+    display:flex;
+    line-height: 20px;
+    width: 25%;
+    padding: 12px;
+    border: 1px solid var(--black-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 10px 10px;
+    margin-bottom: 16px;
+    resize: vertical;
+    background-color: var(--primary-color);
+}
+
+button{
+    background-color: var(--button-color);
+    cursor: pointer;
+    margin: 10px 10px;
+    padding: 10px 10px;
+    box-shadow: 0 2px 2px -0.5px var(--shadow-color), 0 2px 2px -1px var(--shadow-color);
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    border: 1px solid var(--black-color);
+}
+
+input[type=submit] {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: var(--black-color);
+    background-color: var(--button-color);
+}
+
+input[type=submit]:hover, button:hover{
+    background-color: var(--button-hover-color);
+}
+
+select{
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow-color);
+    cursor: pointer;
+    margin: 10px 10px;
+    padding: 13px 23px;
+    border: 1px solid var(--black-color);
+    border-radius: 8px;
+    text-align: center;
+}
+
 

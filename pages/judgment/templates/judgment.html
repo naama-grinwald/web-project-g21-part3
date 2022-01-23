@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+<!--title-->
+{% block title %} judgment {% endblock %}
+
+<!--extra css,js file-->
+{% block page_head_extra %}
+    <link rel="stylesheet" href="{{url_for('judgment.static' ,filename='css/judgment.css')}}">
+    <script src="{{url_for('judgment.static', filename='js/judgment.js')}}"></script>
+{% endblock %}
+
+<!--tohen-->
+{% block tohen %}
+    <!--specific tournament headline-->
+    {% include 'headline.html' with context %}
+
+    <h3>ניקוד משחק</h3>
+
+    <form action="'/<int:tournament_id>/judgment/insert'" method="post">
+
+    <div class="upper">
+        <label for="Round">סבב</label>
+        <input type="text" name="Round" placeholder="סבב" required>
+        <label for="desk">מספר שולחן</label>
+        <input type="text" name="desk" placeholder="מספר שולחן" required>
+    </div>
+    <div class="col">
+        <label for="id_player2">מס שחקן 2</label>
+        <input type="text" name="id_player2" placeholder="מספר שחקן" required>
+    </div>
+    <div class="col">
+        <label for="score">ניקוד</label> <br>
+        <select name="score">
+            <option value="tie">0.5 | 0.5</option>
+            <option value="player1_won">1 | 0</option>
+            <option value="player2_won">0 | 1</option>
+        </select>
+    </div>
+    <div class="col">
+        <label for="id_player1">מס שחקן 1</label>
+        <input type="text" name="id_player1" placeholder="מספר שחקן" required>
+    </div>
+    <div class="submit">
+        <input type="submit" value="שלח">
+    </div>
+
+    </form>
+
+{% endblock %}

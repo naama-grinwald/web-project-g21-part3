@@ -4,6 +4,11 @@
 
 
 <h1> דף ניהול טורניר {{ tournament.name }}</h1>
+
+{% if True %}
+<button id="back" onclick="location.href='/tournament/{{ tournament.id }}'"><p><b>חזרה לטורניר</b></p></button>
+{% endif %}
+
 <div class="details">
 <p> תאריך: {{ tournament.date }}</p>
 <p> מיקום: {{ tournament.location }}</p>
@@ -12,4 +17,4 @@
 <p> פרטים נוספים: {{ tournament.details }}</p>
 </div>
 
-<button><h2>חזרה לטורניר</h2></button>
+<hr>
