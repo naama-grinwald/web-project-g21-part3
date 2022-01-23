@@ -9,7 +9,7 @@ results = Blueprint('results', __name__,
 
 
 # Routes
-@results.route('/<int:tournament_id>/results')
+@results.route('/tournament/<int:tournament_id>/results')
 def results_func(tournament_id):
     # get tournament table
     id_query = 'select * from tournaments where id=%s;' % tournament_id
