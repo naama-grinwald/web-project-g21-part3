@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, url_for
+from utilities.db.interact_with_DB import interact_db
 
 # main blueprint definition
 main = Blueprint('main', __name__,
