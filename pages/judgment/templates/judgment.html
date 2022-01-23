@@ -16,7 +16,7 @@
 
     <h3>ניקוד משחק</h3>
 
-    <form action="'/<int:tournament_id>/judgment/insert'" method="post">
+    <form action="/tournament/{{ tournament.id }}/judgment/insert_score" method="post">
 
     <div class="upper">
         <label for="Round">סבב</label>
@@ -31,7 +31,7 @@
     <div class="col">
         <label for="score">ניקוד</label> <br>
         <select name="score">
-            <option value="tie">0.5 | 0.5</option>
+            <option value="draw">0.5 | 0.5</option>
             <option value="player1_won">1 | 0</option>
             <option value="player2_won">0 | 1</option>
         </select>
@@ -43,7 +43,9 @@
     <div class="submit">
         <input type="submit" value="שלח">
     </div>
-
     </form>
+    {% for message in get_flashed_messages() %}
+        <h4 class="alert-change">{{ message }}</h4>
+    {% endfor %}
 
 {% endblock %}

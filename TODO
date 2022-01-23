@@ -1,0 +1,26 @@
+READY:
+headline
+main
+
+TODO:
+navbar
+footer
+login
+
+create_tournament: form & add link (button) to main
+results: player name
+
+tournament: update, delete tournament & add link (button) back to main & link from nav
+judgment: get, update, delete gamescore
+
+dtaff: get table, update, delete staff & link from nav
+create_staff: form & add link (button) to dtaff
+players: get table, update, delete players & link from nav
+create_player: form & add link (button) to players
+
+attendance player-tournament?
+
+*write file
+*instractions: enoght js, validations, sql query
+*add data
+*db manager

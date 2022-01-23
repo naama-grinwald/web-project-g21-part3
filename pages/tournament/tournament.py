@@ -20,7 +20,7 @@ def tournament_func(tournament_id):
     ranked_tables = interact_db(query=ranked_tables_query, query_type='fetch')[0]
 
     # get number of rounds
-    rounds_query = 'select count(*) as rounds from GameScores where id_tournament=%s group by round;' % tournament_id
+    rounds_query = 'select count(distinct round) as rounds from GameScores where id_tournament=%s;' % tournament_id
     rounds = interact_db(query=rounds_query, query_type='fetch')[0]
 
     # get number of players
