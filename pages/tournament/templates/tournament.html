@@ -11,10 +11,9 @@
 
 <!--tohen-->
 {% block tohen %}
-    {% include 'headline.html' %}
-    {% for tournament in tournaments %}
-    <p>trying {{ tournament.name }}</p>
-    {% endfor %}
+
+    {% include 'headline.html' with context %}
+
     <div class="container">
         <div class="detail">
             <h5>שולחנות שנוקדו</h5>

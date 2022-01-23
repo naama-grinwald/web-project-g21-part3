@@ -26,7 +26,7 @@ CREATE TABLE tournaments (
   constraint FK_Season FOREIGN KEY (Season) REFERENCES LookupTypeSeason (Season)
 );
 
-INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('מלכה','2022-02-02','באר שבע','אזורי','אמצע','פרטים');
+INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('מלכה','2022-02-02','באר שבע','אזורי','אמצע','הטורניר ייערך בספריה של בית ספר דורות');
 
 # Staff Table
 create table Staff (
