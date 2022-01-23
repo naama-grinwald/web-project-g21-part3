@@ -11,28 +11,31 @@
 
 <!--tohen-->
 {% block tohen %}
-
+    <!--specific tournament headline-->
     {% include 'headline.html' with context %}
 
+    <!--calculated data-->
     <div class="container">
         <div class="detail">
             <h5>שולחנות שנוקדו</h5>
-            <p>(query)</p>
+            <p>{{ ranked_tables.tables }}</p>
         </div>
         <div class="detail">
             <h5>מספר סבבים</h5>
-            <p>(query)</p>
+            <p>{{ rounds.rounds }}</p>
         </div>
         <div class="detail">
             <h5>חניכים משתתפים</h5>
-            <p>(query)</p>
+            <p>{{ players.players }}</p>
         </div>
     </div>
+
+    <!--other pages-->
     <div class="container">
         <div class="card" onclick="location.href=''">
             <h3>שיפוט</h3>
         </div>
-        <div class="card" onclick="location.href=''">
+        <div class="card" onclick="location.href='{{ tournaments.id }}/results'">
             <h3>תוצאות</h3>
         </div>
     </div>

@@ -30,3 +30,4 @@ def interact_db(query, query_type: str):
     return return_value
 
 # ------------------------------------------------- #
+
