@@ -13,6 +13,7 @@ main = Blueprint('main', __name__,
 def main_func():
     query = 'select * from tournaments'
     tournaments = interact_db(query=query, query_type='fetch')
+    print(tournaments)
     return render_template('main.html', tournaments=tournaments)
 
 

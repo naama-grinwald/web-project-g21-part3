@@ -1,18 +1,1 @@
-table {
-    border-spacing: 0;
-    border: 1px solid #ddd;
-    background-color: white;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-  }
 
-  /* Style table headers and table data */
-  th, td {
-    text-align: right;
-    padding: 16px;
-  }
-
-   tr:nth-child(even) {
-    background-color: #f8f4f0
-  }

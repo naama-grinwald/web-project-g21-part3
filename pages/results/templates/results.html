@@ -7,23 +7,41 @@
 {% block page_head_extra %}
     <link rel="stylesheet" href="{{url_for('results.static' ,filename='css/results.css')}}">
     <script src="{{url_for('results.static', filename='js/results.js')}}"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block tohen %}
 
     {% include 'headline.html' with context %}
 
+    <h3 style="text-align: center"> תוצאות טורניר</h3>
     <div>
         <table id="ResultsTable">
         <tr>
-             <th>קבוצה</th>
+             <th> דירוג </th>
+             <th>מספר חניך</th>
+             <th>שם חניך</th>
              <th>תוצאה</th>
-        </tr>
 
-        <tr>
-            <td class="column1">ה'2 בית ספר אריאל גני תקווה</td>
-            <td class="column2">75%</td>
         </tr>
+        {% for player in score_table %}
+        <tr>
+            <td> {{ player.RowNumber }} </td>
+            <td> {{ player.id_player }} </td>
+            <td> {{ player.name }}</td>
+            <td> {{ player.score }} </td>
+            {% if player.RowNumber == 1 %}
+                <td><i class="fa fa-star" style="color: goldenrod;font-size:36px"></i></td>
+           {% elif player.RowNumber == 2 %}
+                <td><i class="fa fa-star" style="color: goldenrod;font-size:29px"></i></td>
+            {% elif player.RowNumber == 3 %}
+                <td><i class="fa fa-star" style="color: goldenrod;font-size:22px"></i></td>
+            {% else %}
+                <td>    </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
         </table>
     </div>
+
 {% endblock %}
