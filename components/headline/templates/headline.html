@@ -3,13 +3,13 @@
 <script src="{{url_for('headline.static', filename='js/headline.js')}}"></script>
 
 
-<h1> דף ניהול טורניר {{ tournaments.name }}</h1>
+<h1> דף ניהול טורניר {{ tournament.name }}</h1>
 <div class="details">
-<p> תאריך: {{ tournaments.date }}</p>
-<p> מיקום: {{ tournaments.location }}</p>
-<p> סוג הטורניר: {{ tournaments.type }}</p>
-<p> עונה: {{ tournaments.Season }}</p>
-<p> פרטים נוספים: {{ tournaments.details }}</p>
+<p> תאריך: {{ tournament.date }}</p>
+<p> מיקום: {{ tournament.location }}</p>
+<p> סוג הטורניר: {{ tournament.type }}</p>
+<p> עונה: {{ tournament.Season }}</p>
+<p> פרטים נוספים: {{ tournament.details }}</p>
 </div>
 
 <button><h2>חזרה לטורניר</h2></button>

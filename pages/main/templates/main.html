@@ -14,14 +14,16 @@
    <h1>טורנירים</h1>
     <div class="container">
 
-        <div class="card" onclick="location.href='tournament'">
-            <h5>טורניר מלכה</h5>
-            {{url_for('main.static', filename='main.css')}} שגיא<br>
-            {{url_for('main.static' ,filename='css/main.css')}} רועי
+        {% for tournament in tournaments %}
+        <div class="card" onclick="location.href='tournament/{{ tournament.id }}'">
+            <h3><b> טורניר</b> {{ tournament.name }}</h3>
+            <p><b> תאריך:</b> {{ tournament.date }}</p>
+            <p><b>מיקום:</b> {{ tournament.location }}</p>
+            <p><b>סוג הטורניר:</b> {{ tournament.type }}</p>
+            <p><b>עונה:</b> {{ tournament.Season }}</p>
+            <p><b>פרטים נוספים:</b> {{ tournament.details }}</p>
         </div>
+        {% endfor %}
 
-        <div class="card" onclick="location.href='tournament'">
-            <h5>טורניר צריח</h5>
-        </div>
     </div>
 {% endblock %}

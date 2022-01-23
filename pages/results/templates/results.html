@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+<!--title-->
+{% block title %} results {% endblock %}
+
+<!--extra css,js file-->
+{% block page_head_extra %}
+    <link rel="stylesheet" href="{{url_for('results.static' ,filename='css/results.css')}}">
+    <script src="{{url_for('results.static', filename='js/results.js')}}"></script>
+{% endblock %}
+
+{% block tohen %}
+
+    {% include 'headline.html' with context %}
+
+    <div>
+        <table id="ResultsTable">
+        <tr>
+             <th>קבוצה</th>
+             <th>תוצאה</th>
+        </tr>
+
+        <tr>
+            <td class="column1">ה'2 בית ספר אריאל גני תקווה</td>
+            <td class="column2">75%</td>
+        </tr>
+        </table>
+    </div>
+{% endblock %}

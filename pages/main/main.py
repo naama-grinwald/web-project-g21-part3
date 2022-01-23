@@ -11,4 +11,8 @@ main = Blueprint('main', __name__,
 # Routes
 @main.route('/main')
 def main_func():
-    return render_template('main.html')
+    query = 'select * from tournaments'
+    tournaments = interact_db(query=query, query_type='fetch')
+    return render_template('main.html', tournaments=tournaments)
+
+
