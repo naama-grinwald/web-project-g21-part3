@@ -28,6 +28,7 @@ CREATE TABLE tournaments (
 
 INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('מלכה','2022-02-02','באר שבע','אזורי','אמצע','הטורניר ייערך בספריה של בית ספר דורות');
 INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('ציריך','2022-03-01','ירושלים','ארצי','סוף','פרטים');
+
 # Staff Table
 create table Staff (
     id       int auto_increment,

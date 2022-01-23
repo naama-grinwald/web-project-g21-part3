@@ -6,11 +6,13 @@
      font-size: 17px;
  }
 
- #back{
-    position: absolute;
-    left: 7%;
-    top: 7%;
- }
+.heading {
+     display: inline-flex;
+}
+.button {
+     display: inline;
+     float: left;
+}
 
 /*responsive web */
 @media only screen and (max-width:900px) {

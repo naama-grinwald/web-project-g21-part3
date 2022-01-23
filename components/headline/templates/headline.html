@@ -2,12 +2,12 @@
 <link rel="stylesheet" href="{{url_for('headline.static' ,filename='css/headline.css')}}">
 <script src="{{url_for('headline.static', filename='js/headline.js')}}"></script>
 
-
-<h1> דף ניהול טורניר {{ tournament.name }}</h1>
-
+<div style=" text-align: center;">
+<h1 class="heading"> דף ניהול טורניר {{ tournament.name }}</h1>
 {% if True %}
-<button id="back" onclick="location.href='/tournament/{{ tournament.id }}'"><p><b>חזרה לטורניר</b></p></button>
+<button class="button" onclick="location.href='/tournament/{{ tournament.id }}'"><p><b>חזרה לטורניר</b></p></button>
 {% endif %}
+</div>
 
 <div class="details">
 <p> תאריך: {{ tournament.date }}</p>

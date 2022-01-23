@@ -11,19 +11,21 @@
 
 <!--tohen-->
 {% block tohen %}
-   <h1>טורנירים</h1>
-    <div class="container">
 
-        {% for tournament in tournaments %}
-        <div class="card" onclick="location.href='tournament/{{ tournament.id }}'">
-            <h3><b> טורניר</b> {{ tournament.name }}</h3>
-            <p><b> תאריך:</b> {{ tournament.date }}</p>
-            <p><b>מיקום:</b> {{ tournament.location }}</p>
-            <p><b>סוג הטורניר:</b> {{ tournament.type }}</p>
-            <p><b>עונה:</b> {{ tournament.Season }}</p>
-            <p><b>פרטים נוספים:</b> {{ tournament.details }}</p>
-        </div>
-        {% endfor %}
-
+    <div style=" text-align: center;">
+    <h1 class="heading">טורנירים</h1>
+    <button class="button" onclick="" ><p><b>יצירת טורניר</b></p></button>
     </div>
+
+    {% for tournament in tournaments %}
+         <div class="card" onclick="location.href='tournament/{{ tournament.id }}'">
+         <h3><b> טורניר</b> {{ tournament.name }}</h3>
+         <p><b> תאריך:</b> {{ tournament.date }}</p>
+         <p><b>מיקום:</b> {{ tournament.location }}</p>
+         <p><b>סוג הטורניר:</b> {{ tournament.type }}</p>
+         <p><b>עונה:</b> {{ tournament.Season }}</p>
+         <p><b>פרטים נוספים:</b> {{ tournament.details }}</p>
+        </div>
+    {% endfor %}
+
 {% endblock %}
