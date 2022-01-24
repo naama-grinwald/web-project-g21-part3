@@ -27,4 +27,4 @@ def tournament_func(tournament_id):
     players_query = 'select count(distinct player) as players from ((select id_player1 as player from GameScores where id_tournament=%s) union (select id_player2 as player from GameScores where id_tournament=%s)) as a;' % (tournament_id,tournament_id)
     players = interact_db(query=players_query, query_type='fetch')[0]
 
-    return render_template('tournament.html',tournament=tournament, ranked_tables=ranked_tables, rounds=rounds, players=players)
+    return render_template('tournament.html',tournament=tournament, ranked_tables=ranked_tables, rounds=rounds, players=players, back_tournament=True)

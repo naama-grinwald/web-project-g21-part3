@@ -2,26 +2,34 @@
     padding: 5px;
     text-align: center;
 }
- p{
-     font-size: 17px;
- }
 
-.heading {
-     display: inline-flex;
+p{
+    font-size: 17px;
 }
-.button {
-     display: inline;
-     float: left;
+
+.header {
+    text-align: center;
+}
+
+.header h1 {
+    display: inline-block;
+}
+
+.header button {
+    display: inline-block;
+    position: absolute;
+    left: 7%;
+    margin-top: 1%;
+    width: 15%;
 }
 
 /*responsive web */
 @media only screen and (max-width:900px) {
 
-#back{
+.header button{
     position: static;
     display: inline-block;
     text-align: center;
     width:90%;
 }
-
 }

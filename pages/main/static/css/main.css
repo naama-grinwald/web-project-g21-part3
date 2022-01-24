@@ -10,12 +10,40 @@
   justify-content: center;
 }
 
-.heading {
-     display: inline-flex;
+.header {
+    text-align: center;
 }
-.button {
-     display: inline;
-     float: left;
+
+.header h1 {
+    display: inline-block;
+}
+
+.header button {
+    display: inline-block;
+    position: absolute;
+    left: 7%;
+    margin-top: 1%;
+    width: 15%;
+}
+
+.header button p{
+    font-size: 17px;
+}
+
+/*responsive web */
+@media only screen and (max-width:900px) {
+
+    .header button {
+        position: static;
+        display: inline-block;
+        text-align: center;
+        width: 90%;
+    }
+
+    .card {
+    text-align: center;
+    width:90%;
+    }
 }
 
 

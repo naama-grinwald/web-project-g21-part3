@@ -7,10 +7,10 @@ navbar
 footer
 login
 
-create_tournament: form & add link (button) to main
+create_tournament: form & link from nav
 results: player name
 
-tournament: update, delete tournament & add link (button) back to main & link from nav
+tournament: update, delete tournament & add link (button) back to main
 judgment: get, update, delete gamescore
 
 dtaff: get table, update, delete staff & link from nav
