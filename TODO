@@ -13,7 +13,7 @@ results: player name
 tournament: update, delete tournament & add link (button) back to main
 judgment: get, update, delete gamescore
 
-dtaff: get table, update, delete staff & link from nav
+staff: get table, update, delete staff & link from nav
 create_staff: form & add link (button) to dtaff
 players: get table, update, delete players & link from nav
 create_player: form & add link (button) to players
