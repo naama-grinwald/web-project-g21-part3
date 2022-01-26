@@ -1,3 +1,59 @@
-h3{
+h4, h2{
     text-align: center;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.upper input{
+    width: 20%;
+}
+
+.upper {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 6px;
+}
+
+.col input{
+    width: 20%;
+}
+
+.col {
+    display: flex;
+    float: right;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    margin-top: 6px;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 0 20px;
+    margin-top: 6px;
+}
+
+/*responsive web */
+@media only screen and (max-width:600px) {
+
+    .submit, input {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    overflow-wrap: break-word;
+    align-items: center;
+    margin: auto;
+    }
+
+    .col{
+        display: block;
+    }
 }

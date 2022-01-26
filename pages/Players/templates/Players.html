@@ -12,36 +12,71 @@
 
 <!--tohen-->
 {% block tohen %}
-    <h3 style="text-align: center"> אנשי צוות</h3>
+    {% for message in get_flashed_messages() %}
+        <h4 class="alert-change">{{ message }}</h4>
+    {% endfor %}
+    <h3 style="text-align: center">שחקנים</h3>
     <div>
         <table id="PlayersTable">
         <tr>
-             <th> אימייל </th>
+             <th> מספר שחקן </th>
              <th>שם פרטי ומשפחה</th>
-             <th>טלפון</th>
-             <th>תפקיד</th>
-             <th>סיסמא</th>
+             <th>רמה</th>
+             <th>גיל</th>
+             <th>בית ספר</th>
 
         </tr>
         {% for Players in Players_table %}
         <tr>
-            <td> {{ Players.email }} </td>
+            <td> {{ Players.id }} </td>
             <td> {{ Players.name }}</td>
-            <td> {{ Players.phone }} </td>
-            <td> {{ Players.role }} </td>
-            <td> {{ Players.password }} </td>
+            <td> {{ Players.level }} </td>
+            <td> {{ Players.age }} </td>
+            <td> {{ Players.school }} </td>
             <td>
 {#              <a href="{{url_for('Players.delete_Players_func', Players_email= Players.email)}}"> Delete</a>#}
-                <button id="removeButton" class="select" onclick="location.href='/Players/delete_Players/{{ Players.email }}'")>מחק</button>
+                <button id="removeButton" class="select" onclick="location.href='/Players/delete_Players/{{ Players.id }}'")>מחק</button>
             </td>
         </tr>
         {% endfor %}
         </table>
     </div>
 
-    {% for message in get_flashed_messages() %}
-        <h4 class="alert-change">{{ message }}</h4>
-    {% endfor %}
+    <div class="container">
+        <div class="card" onclick="location.href='/Create_Player'">
+           צור שחקן חדש
+        </div>
+    </div>
 
+    <h3 style="text-align: center">עידכון פרטי שחקן</h3>
+    <p style="text-align: center">הכנס/י פרטים בשדות שתרצה/י לעדכן:</p>
+    <form action="/Players/update_player" method="post">
+        <div class="upper">
+            <label class='label' for="id"> מספר שחקן לעידכון:</label><br>
+            <input type="number" class="field" name="id" placeholder="מספר שחקן" required><br>
+
+             <label class='label' for="name"> שם פרטי:</label><br>
+            <input type="text" class="field" name="name" placeholder="שם פרטי" ><br>
+
+        </div>
+        <div class="upper">
+            <label for="LastName"> שם משפחה:</label><br>
+            <input type="text" class="field" name="LastName" placeholder="שם משפחה" ><br>
+
+            <label class='label' for="level"> רמת השחקן:</label><br>
+            <input type="number" class="field" name="level" placeholder="רמת השחקן" ><br>
+
+        </div>
+        <div class="upper">
+            <label class='label' for="age"> גיל השחקן:</label><br>
+            <input type="number" class="field" name="age" placeholder="גיל השחקן" ><br>
+
+            <label for="school"> בית ספר:</label><br>
+            <input type="text" class="field" name="school" placeholder="בית ספר" ><br>
+        </div>
+        <div class="submit">
+            <input type="submit" value="עדכן ">
+        </div>
+    </form>
 
 {% endblock %}

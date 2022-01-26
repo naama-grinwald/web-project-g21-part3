@@ -11,20 +11,48 @@
 
 <!--tohen-->
 {% block tohen %}
-    {% if tournament.id %}
-    <!--specific tournament headline-->
-    {% include 'headline.html' with context %}
-
-        <h3>ערוך את השדות</h3>
+    {% if tournament %}
+        <!--specific tournament headline-->
+        {% include 'headline.html' with context %}
+        <h4>הכנס פרטים חדשים בשדות שתרצה לעדכן</h4>
+        <form action="/tournament/{{ tournament.id }}/update_tournament_route" method="post">
+    {% else %}
+        <h2>יצירת טורניר</h2>
+        <form action="/create_tournament_route" method="post">
     {% endif %}
+        <div class="col">
+            <label class='label' for="name"> שם הטורניר:</label><br>
+            <input type="text" class="field" name="name" placeholder="שם הטורניר" {% if not tournament %}required{% endif %}><br>
+        </div>
+        <div class="col">
+            <label class='label' for="date"> תאריך:</label><br>
+            <input type="date" class="field" name="date" placeholder="תאריך" {% if not tournament %}required{% endif %}><br>
 
+            <label for="location"> מיקום:</label><br>
+            <input type="text" class="field" name="location" placeholder="מיקום" {% if not tournament %}required{% endif %}><br>
+        </div>
+        <div class="col">
+            <label for="type"> סוג הטורניר:</label><br>
+            <select name="type">
+            <option value="אזורי">אזורי</option>
+            <option value="ארצי">ארצי</option>
+            </select>
 
-    <div class="details">
-    <p> תאריך: {{ tournament.date }}</p>
-    <p> מיקום: {{ tournament.location }}</p>
-    <p> סוג הטורניר: {{ tournament.type }}</p>
-    <p> עונה: {{ tournament.Season }}</p>
-    <p> פרטים נוספים: {{ tournament.details }}</p>
-    </div>
-
+            <label for="Season">עונה:</label><br>
+            <select name="Season">
+            <option value="אמצע">אמצע</option>
+            <option value="סוף">סוף</option>
+            </select>
+        </div>
+        <div class="upper">
+            <label for="details">פרטים נוספים:</label><br>
+            <input type="text" class="field" name="details" placeholder="פרטים" {% if not tournament %}required{% endif %}>
+        </div>
+        <div class="submit">
+        {% if tournament %}
+            <input type="submit" value="עדכן">
+        {% else %}
+            <input type="submit" value="צור טורניר">
+        {% endif %}
+        </div>
 {% endblock %}
