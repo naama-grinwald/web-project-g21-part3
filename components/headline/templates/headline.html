@@ -6,7 +6,7 @@
    <h1> דף ניהול טורניר {{ tournament.name }}</h1>
     {% if back_tournament %}
         <button class="back" onclick="location.href='/main'"><p><b>חזרה לעמוד הבית</b></p></button> <br>
-        <button class="back" onclick="location.href='/tournament/{{ tournament.id }}'"><p><b>עריכת טורניר</b></p></button>
+        <button class="back" onclick="location.href='/tournament/{{ tournament.id }}/update_tournament'"><p><b>עריכת טורניר</b></p></button>
     {% else %}
         <button class="back" onclick="location.href='/tournament/{{ tournament.id }}'"><p><b>חזרה לטורניר</b></p></button>
     {% endif %}
