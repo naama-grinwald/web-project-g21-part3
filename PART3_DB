@@ -30,7 +30,6 @@ INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('מלכ�
 INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('צריח','2022-04-01','ירושלים','ארצי','סוף','פרטים');
 INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('פרש','2022-05-01','תל אביב','אזורי','אמצע','פרטים');
 INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('רץ','2022-04-10','חיפה','ארצי','אמצע','פרטים');
-INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('סוס','2022-03-06','באר שבע','אזורי','סוף','פרטים');
 
 # Staff Table
 create table Staff (

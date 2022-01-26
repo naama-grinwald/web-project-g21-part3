@@ -17,6 +17,7 @@
     <button onclick="location.href='/create_tournament'"><p><b>יצירת טורניר</b></p></button>
     </div>
 
+    <div class="container">
     {% for tournament in tournaments %}
          <div class="card" onclick="location.href='tournament/{{ tournament.id }}'">
          <h3><b> טורניר</b> {{ tournament.name }}</h3>
@@ -27,5 +28,6 @@
          <p><b>פרטים נוספים:</b> {{ tournament.details }}</p>
         </div>
     {% endfor %}
+    </div>
 
 {% endblock %}
