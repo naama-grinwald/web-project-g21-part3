@@ -1,7 +1,7 @@
 :root{
 /* Colors */
-    --nav-color: #d09854;
-    --nav-hover-color: #e39c54;
+    --nav-color: rgb(211, 183, 147);
+    --nav-hover-color: rgb(216, 201, 187);
     --background-color: white;
     --primary-color: #EBCF92FF;
     --primary-hover-color: #e9d6cf;
