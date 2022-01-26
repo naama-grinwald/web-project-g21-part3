@@ -154,3 +154,20 @@ table {
    tr:nth-child(even) {
     background-color: var(--button-color)
   }
+
+   /*responsive web */
+@media only screen and (max-width:600px) {
+
+    .submit, select, input {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    overflow-wrap: break-word;
+    align-items: center;
+    margin: auto;
+    }
+
+    .col{
+        display: block;
+    }
+}

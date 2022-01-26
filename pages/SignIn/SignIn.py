@@ -18,13 +18,15 @@ def index():
         password = request.form['password']
         found = val_email_pas(user_email,password)
         if found:
-            session['user_email'] = get_username(user_email)
+
+            session['user_name'] = get_username(user_email)
             session['password'] = password
             return redirect('/main')
         else:
             return redirect('/')
 
 def val_email_pas(user_email,form_password):
+    #naama.grinwald@gmail.com 1234
     # list of all the users
     users_list = Staff.get_staff_email()
     users_list_int = []
@@ -52,6 +54,6 @@ def get_username(user_email):
 
 @SignIn.route('/logout')
 def logout_func():
-    session['user_email'] = ''
+    session['user_name'] = ''
     session['password'] = ''
     return redirect('/')

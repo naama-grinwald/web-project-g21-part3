@@ -1,17 +1,59 @@
+.upper input{
+    width: 20%;
+}
+
+.upper {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 6px;
+}
+
+.submit{
+    text-align:center;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 0 20px;
+    margin-top: 6px;
+}
+
 .alert-change{
         text-align: center;
 }
 
 .card {
-    display: inline-block;
-    height: 100px;
-    width: 100px;
+    cursor: pointer;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: var(--black-color);
+    background-color: var(--button-color);
+    border: 1px solid var(--black-color);
 }
 
 .container {
   display: flex;
   justify-content: center;
   padding:3px;
+}
+
+input[type=submit] {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: var(--black-color);
+    background-color: var(--button-color);
 }
 

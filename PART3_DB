@@ -27,14 +27,16 @@ CREATE TABLE tournaments (
 );
 
 INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('מלכה','2022-02-02','באר שבע','אזורי','אמצע','הטורניר ייערך בספריה של בית ספר דורות');
-INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('ציריך','2022-03-01','ירושלים','ארצי','סוף','פרטים');
+INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('צריח','2022-04-01','ירושלים','ארצי','סוף','פרטים');
+INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('פרש','2022-05-01','תל אביב','אזורי','אמצע','פרטים');
+INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('רץ','2022-04-10','חיפה','ארצי','אמצע','פרטים');
 
 # Staff Table
 create table Staff (
     email    varchar(100) not null,
     first_name      varchar(100) not null,
     last_name       varchar(100) not null,
-    phone    int          null,
+    phone    varchar(20)          null,
     role varchar(100) not null,
     password varchar(100) not null,
 
@@ -43,6 +45,13 @@ create table Staff (
 );
 
 INSERT INTO staff(email, first_name, last_name, phone, role, password) VALUES ('naama.grinwald@gmail.com', 'נעמה', 'גרינוולד', 0505917191, 'מדריך', '1234');
+INSERT INTO staff(email, first_name, last_name, phone, role, password) VALUES ('ori@gmail.com', 'אורי', 'חן', 0503425674, 'מדריך', '2222');
+INSERT INTO staff(email, first_name, last_name, phone, role, password) VALUES ('dana12@gmail.com', 'דנה', 'אליאס', 0525936191, 'שופט', '4567');
+INSERT INTO staff(email, first_name, last_name, phone, role, password) VALUES ('tzofnat@gmail.com', 'צפנת', 'כהן', 0505922191, 'מדריך', '7777');
+INSERT INTO staff(email, first_name, last_name, phone, role, password) VALUES ('niv@gmail.com', 'ניב', 'גרינברג', 0505556743, 'שופט', '8888');
+INSERT INTO staff(email, first_name, last_name, phone, role, password) VALUES ('tal@gmail.com', 'טל', 'לוי', 0543267894, 'מדריך', '4901');
+
+
 
 # Players Table
 create table Players (
@@ -59,6 +68,9 @@ create table Players (
 
 INSERT INTO Players(id, first_name, last_name, level, age, school) VALUES (1, 'אלון', 'ברינה', 2 , 10, 'עמית');
 INSERT INTO Players(id, first_name, last_name, level, age, school) VALUES (2, 'יעל', 'אליאס', 3 , 11 , 'ניצנים');
+INSERT INTO Players(id, first_name, last_name, level, age, school) VALUES (3, 'ספיר', 'כהן', 1 , 8 , 'אריאל');
+INSERT INTO Players(id, first_name, last_name, level, age, school) VALUES (4, 'בועז', 'לוי', 3 , 11 , 'דורות');
+INSERT INTO Players(id, first_name, last_name, level, age, school) VALUES (5, 'אופיר', 'חן', 3 , 9 , 'אריאל');
 
 # Game Scores Table
 CREATE TABLE GameScores(
@@ -77,6 +89,10 @@ CREATE TABLE GameScores(
 );
 
 INSERT INTO GameScores(id_tournament,Round,desk,id_player1,id_player2,score_player1,score_player2) VALUES (1, 1, 4, 1, 2, 0.5, 0.5);
+INSERT INTO GameScores(id_tournament,Round,desk,id_player1,id_player2,score_player1,score_player2) VALUES (1, 1, 5, 3, 4, 1, 0);
+INSERT INTO GameScores(id_tournament,Round,desk,id_player1,id_player2,score_player1,score_player2) VALUES (1, 2, 10, 4, 5, 0.5, 0.5);
+INSERT INTO GameScores(id_tournament,Round,desk,id_player1,id_player2,score_player1,score_player2) VALUES (2, 1, 7, 1, 2, 0, 1);
+INSERT INTO GameScores(id_tournament,Round,desk,id_player1,id_player2,score_player1,score_player2) VALUES (2, 2, 8, 3, 5, 0.5, 0.5);
+INSERT INTO GameScores(id_tournament,Round,desk,id_player1,id_player2,score_player1,score_player2) VALUES (3, 1, 4, 1, 2, 1, 0);
 
-# Many to Many Players-Tournment Table
 ###########################
