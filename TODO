@@ -11,7 +11,7 @@ create_tournament: form & link from nav
 results: player name
 
 tournament: update, delete tournament & add link (button) back to main
-judgment: get, update, delete gamescore
+judgment: update, delete gamescore
 
 staff: get table, update, delete staff & link from nav
 create_staff: form & add link (button) to dtaff

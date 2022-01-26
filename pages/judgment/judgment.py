@@ -15,7 +15,9 @@ def judgment_func(tournament_id):
     # get tournament table
     id_query = 'select * from tournaments where id=%s;' % tournament_id
     tournament = interact_db(query=id_query, query_type='fetch')[0]
-    return render_template('judgment.html', tournament=tournament)
+    scores_query = 'select * from GameScores where id_tournament=%s;' % tournament_id
+    scores = interact_db(query=scores_query, query_type='fetch')
+    return render_template('judgment.html', tournament=tournament, scores=scores)
 
 
 @judgment.route('/tournament/<int:tournament_id>/judgment/insert_score', methods=['POST'])
@@ -69,3 +71,16 @@ def insert_judgment_func(tournament_id):
 
     # back to judgment
     return redirect('/tournament/%s/judgment' % tournament_id)
+
+
+@judgment.route('/tournament/<int:tournament_id>/judgment/delete_score', methods=['POST'])
+def delete_judgment_func(tournament_id):
+    # get data
+    id_tournament = tournament_id
+    Round = request.form['Round']
+    desk = request.form['desk']
+
+    query = 'DELETE FROM GameScores WHERE id_tournament="%s" and Round="%s" and desk="%s";' % (tournament_id,Round,desk)
+    interact_db(query=query, query_type='commit')
+    return redirect('/tournament/%s/judgment' % tournament_id)
+

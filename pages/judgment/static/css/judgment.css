@@ -45,6 +45,11 @@ h3{
         text-align: center;
     }
 
+#delete{
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
 /*responsive web */
 @media only screen and (max-width:600px) {
 
