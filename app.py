@@ -2,6 +2,7 @@ from flask import Flask, url_for
 
 # App setup
 app = Flask(__name__)
+app.secret_key= '123'
 app.config.from_pyfile('settings.py')
 
 # Pages
@@ -29,15 +30,18 @@ app.register_blueprint(judgment)
 from pages.page_error_handlers.page_error_handlers import page_error_handlers
 app.register_blueprint(page_error_handlers)
 
+## SignIn
+from pages.SignIn.SignIn import SignIn
+app.register_blueprint(SignIn)
 
 # Components
 # Navbar
-#from components.navbar.navbar import navbar
-#app.register_blueprint(navbar)
+from components.navbar.navbar import navbar
+app.register_blueprint(navbar)
 
 # Footer
-#from components.footer.footer import footer
-#app.register_blueprint(footer)
+from components.footer.footer import footer
+app.register_blueprint(footer)
 
 # Headline
 from components.headline.headline import headline
