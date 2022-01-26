@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from utilities.db.interact_with_DB import interact_db
 from flask import request, redirect, flash
+from utilities.db_objects import Tournaments
 
 
 # judgment blueprint definition
@@ -13,8 +14,9 @@ judgment = Blueprint('judgment', __name__,
 @judgment.route('/tournament/<int:tournament_id>/judgment',methods=['GET', 'POST'])
 def judgment_func(tournament_id):
     # get tournament table
-    id_query = 'select * from tournaments where id=%s;' % tournament_id
-    tournament = interact_db(query=id_query, query_type='fetch')[0]
+    #id_query = 'select * from tournaments where id=%s;' % tournament_id
+    #tournament = interact_db(query=id_query, query_type='fetch')[0]
+    tournament=Tournaments.get_tournament(self, id)[0]
     scores_query = 'select * from GameScores where id_tournament=%s;' % tournament_id
     scores = interact_db(query=scores_query, query_type='fetch')
     return render_template('judgment.html', tournament=tournament, scores=scores)
