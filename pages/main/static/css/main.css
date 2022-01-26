@@ -1,3 +1,9 @@
+  body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
 .card {
     display: inline-block;
     height: 250px;
