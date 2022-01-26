@@ -1,0 +1,33 @@
+h3{
+    text-align:center;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.upper input{
+    width: 20%;
+}
+
+.upper {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 6px;
+}
+
+.submit{
+    text-align:center;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 0 20px;
+    margin-top: 6px;
+}
+
+.alert-change{
+        text-align: center;
+}

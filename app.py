@@ -34,6 +34,21 @@ app.register_blueprint(create_tournament)
 from pages.page_error_handlers.page_error_handlers import page_error_handlers
 app.register_blueprint(page_error_handlers)
 
+# Create_Staff
+from pages.Create_Staff.Create_Staff import Create_Staff
+app.register_blueprint(Create_Staff)
+
+# Create_Player
+from pages.Create_Player.Create_Player import Create_Player
+app.register_blueprint(Create_Player)
+
+# staff
+from pages.staff.staff import staff
+app.register_blueprint(staff)
+
+# staff
+from pages.Players.Players import Players
+app.register_blueprint(Players)
 ## SignIn
 from pages.SignIn.SignIn import SignIn
 app.register_blueprint(SignIn)

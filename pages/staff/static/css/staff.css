@@ -1,0 +1,17 @@
+.alert-change{
+        text-align: center;
+}
+
+.card {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding:3px;
+}
+

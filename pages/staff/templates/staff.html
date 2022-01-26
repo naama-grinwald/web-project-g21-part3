@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+<!--title-->
+{% block title %} staff {% endblock %}
+
+<!--extra css,js file-->
+{% block page_head_extra %}
+    <link rel="stylesheet" href="{{url_for('staff.static' ,filename='css/staff.css')}}">
+    <script src="{{url_for('staff.static', filename='js/staff.js')}}"></script>
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
+{% endblock %}
+
+<!--tohen-->
+{% block tohen %}
+    <h3 style="text-align: center"> אנשי צוות</h3>
+    <div>
+        <table id="StaffTable">
+        <tr>
+             <th> אימייל </th>
+             <th>שם פרטי ומשפחה</th>
+             <th>טלפון</th>
+             <th>תפקיד</th>
+             <th>סיסמא</th>
+
+        </tr>
+        {% for staff in staff_table %}
+        <tr>
+            <td> {{ staff.email }} </td>
+            <td> {{ staff.name }}</td>
+            <td> {{ staff.phone }} </td>
+            <td> {{ staff.role }} </td>
+            <td> {{ staff.password }} </td>
+            <td>
+{#              <a href="{{url_for('staff.delete_staff_func', staff_email= staff.email)}}"> Delete</a>#}
+                <button id="removeButton" class="select" onclick="location.href='/staff/delete_staff/{{ staff.email }}'")>מחק</button>
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+    {% for message in get_flashed_messages() %}
+        <h4 class="alert-change">{{ message }}</h4>
+    {% endfor %}
+    <div class="container">
+        <div class="card" onclick="location.href='/Create_Staff'">
+            <h4>צור איש צוות חדש</h4>
+        </div>
+    </div>
+{% endblock %}
