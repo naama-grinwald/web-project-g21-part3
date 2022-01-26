@@ -12,6 +12,9 @@
 
 <!--tohen-->
 {% block tohen %}
+    {% for message in get_flashed_messages() %}
+        <h4 class="alert-change">{{ message }}</h4>
+    {% endfor %}
     <h3 style="text-align: center"> אנשי צוות</h3>
     <div>
         <table id="StaffTable">
@@ -38,13 +41,38 @@
         {% endfor %}
         </table>
     </div>
-
-    {% for message in get_flashed_messages() %}
-        <h4 class="alert-change">{{ message }}</h4>
-    {% endfor %}
     <div class="container">
         <div class="card" onclick="location.href='/Create_Staff'">
-            <h4>צור איש צוות חדש</h4>
+            צור איש צוות חדש
         </div>
     </div>
+
+    <h3 style="text-align: center">עידכון פרטי איש צוות</h3>
+    <p style="text-align: center">הכנס/י פרטים בשדות שתרצה/י לעדכן:</p>
+    <form action="/staff/update_staff" method="post">
+        <div class="upper">
+            <label for="signIn_Email"> דוא"ל:</label><br>
+            <input type="email" class="field" name="staffEmail" placeholder="כתובת דואר אלקטרוני" required=""><br>
+
+            <label class='label' for="staffName"> שם פרטי:</label><br>
+            <input type="text" class="field" name="staffName" placeholder="שם פרטי" ><br>
+        </div>
+        <div class="upper">
+            <label for="staffLastName"> שם משפחה:</label><br>
+            <input type="text" class="field" name="staffLastName" placeholder="שם משפחה" ><br>
+
+            <label for="staffPhone">מספר טלפון:</label><br>
+            <input type="tel" class="field" name="staffPhone" pattern="[0][5][0-9]{8}" placeholder="********05" >        </div>
+        <div class="upper">
+            <label for="staffRole">תפקיד:</label><br>
+            <input type="text" class="field" name="staffRole" placeholder="תפקיד" >
+
+            <label for="staffPassword"> סיסמא:</label><br>
+            <input type="password" class="field" name="staffPassword" placeholder="סיסמא" ><br>
+        </div>
+        <div class="submit">
+            <input type="submit" value="עדכן">
+        </div>
+    </form>
+
 {% endblock %}
