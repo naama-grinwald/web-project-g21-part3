@@ -20,7 +20,7 @@ def index():
         found = val_email_pas(user_email,password)
         if found:
 
-            session['user_email'] = get_username(user_email)
+            session['user_name'] = get_username(user_email)
             session['password'] = password
             return redirect('/main')
         else:
@@ -58,6 +58,6 @@ def get_username(user_email):
 
 @SignIn.route('/logout')
 def logout_func():
-    session['user_email'] = ''
+    session['user_name'] = ''
     session['password'] = ''
     return redirect('/')

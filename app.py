@@ -46,7 +46,7 @@ app.register_blueprint(Create_Player)
 from pages.staff.staff import staff
 app.register_blueprint(staff)
 
-# staff
+# Players
 from pages.Players.Players import Players
 app.register_blueprint(Players)
 ## SignIn
