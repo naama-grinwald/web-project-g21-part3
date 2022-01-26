@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+<!--title-->
+{% block title %} create_tournament {% endblock %}
+
+<!--extra css,js file-->
+{% block page_head_extra %}
+    <link rel="stylesheet" href="{{url_for('create_tournament.static' ,filename='css/create_tournament.css')}}">
+    <script src="{{url_for('create_tournament.static', filename='js/create_tournament.js')}}"></script>
+{% endblock %}
+
+<!--tohen-->
+{% block tohen %}
+    {% if tournament.id %}
+    <!--specific tournament headline-->
+    {% include 'headline.html' with context %}
+
+        <h3>ערוך את השדות</h3>
+    {% endif %}
+
+
+    <div class="details">
+    <p> תאריך: {{ tournament.date }}</p>
+    <p> מיקום: {{ tournament.location }}</p>
+    <p> סוג הטורניר: {{ tournament.type }}</p>
+    <p> עונה: {{ tournament.Season }}</p>
+    <p> פרטים נוספים: {{ tournament.details }}</p>
+    </div>
+
+{% endblock %}

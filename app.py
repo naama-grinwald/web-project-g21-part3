@@ -26,6 +26,10 @@ app.register_blueprint(results)
 from pages.judgment.judgment import judgment
 app.register_blueprint(judgment)
 
+# Create Tournament
+from pages.create_tournament.create_tournament import create_tournament
+app.register_blueprint(create_tournament)
+
 # Page error handlers
 from pages.page_error_handlers.page_error_handlers import page_error_handlers
 app.register_blueprint(page_error_handlers)
