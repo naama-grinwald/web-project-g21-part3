@@ -45,6 +45,7 @@ create table Staff (
 
 INSERT INTO staff(first_name, last_name, email, phone, role, password) VALUES ('נעמה', 'גרינוולד', 'naama.grinwald@gmail.com', 0505917191, 'מדריך', '1234');
 INSERT INTO staff(first_name, last_name, email, phone, role, password) VALUES ('אורי', 'חן', 'ori123@gmail.com', 0502343443, 'שופט', '1111');
+
 # Players Table
 create table Players (
     id              int auto_increment,
