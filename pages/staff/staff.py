@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template
 from utilities.db.interact_with_DB import interact_db
 from flask import request, redirect, flash
+from utilities.db_objects.Staff import Staff
+
 
 # staff blueprint definition
 staff = Blueprint('staff', __name__,
@@ -13,8 +15,7 @@ staff = Blueprint('staff', __name__,
 @staff.route('/staff')
 def staff_func():
     # get staff table
-    staff_query = 'select email, concat(first_name," ", last_name) AS name, phone, role, password from staff;'
-    staff_table = interact_db(query=staff_query, query_type='fetch')
+    staff_table = Staff.get_staff()
     return render_template('staff.html', staff_table=staff_table)
 
 
@@ -25,7 +26,6 @@ def delete_staff(staff_email):
     print(type(staff_email))
 
     email = staff_email
-    query= "delete from staff where email='%s';" % email
-    interact_db(query=query, query_type='commit')
+    Staff.delete_staff(email)
     flash('איש הצוות נמחק בהצלחה!')
     return redirect('/staff')

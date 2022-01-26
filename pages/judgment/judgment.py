@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
-from utilities.db.interact_with_DB import interact_db
 from flask import request, redirect, flash
-from utilities.db_objects import Tournaments
+from utilities.db_objects.Tournaments import Tournaments
+from utilities.db_objects.Players import Players
 
 
 # judgment blueprint definition
@@ -14,11 +14,9 @@ judgment = Blueprint('judgment', __name__,
 @judgment.route('/tournament/<int:tournament_id>/judgment',methods=['GET', 'POST'])
 def judgment_func(tournament_id):
     # get tournament table
-    #id_query = 'select * from tournaments where id=%s;' % tournament_id
-    #tournament = interact_db(query=id_query, query_type='fetch')[0]
-    tournament=Tournaments.get_tournament(self, id)[0]
-    scores_query = 'select * from GameScores where id_tournament=%s;' % tournament_id
-    scores = interact_db(query=scores_query, query_type='fetch')
+    tournament=Tournaments.get_tournament(tournament_id)[0]
+    # get game scores
+    scores=Tournaments.get_scores(tournament_id)
     return render_template('judgment.html', tournament=tournament, scores=scores)
 
 
@@ -41,19 +39,17 @@ def insert_judgment_func(tournament_id):
         score_player1=0
         score_player2=1
 
-    # list of users
-    players_query = 'select id from Players;'
-    players_list = interact_db(query=players_query, query_type='fetch')
+    # get players id from DB
+    players_list = Players.get_players_id()
     players_list_int=[]
     for row in players_list:
         players_list_int.append(str(row.id))
 
-    # existing game scores
-    scores_query = 'select * from GameScores;'
-    scores = interact_db(query=scores_query, query_type='fetch')
+    # get game scores
+    scores=Tournaments.get_scores(tournament_id)
     inputOK= True
     for row in scores:
-        if (id_tournament == row.id_tournament) and (int(Round) == row.Round) and (int(desk) == row.desk):
+        if (int(Round) == row.Round) and (int(desk) == row.desk):
             inputOK = False
 
     # validations
@@ -67,8 +63,7 @@ def insert_judgment_func(tournament_id):
         flash(f'כבר קיים ניקוד עבור שולחן זה...')
     else:
         # insert to DB
-        query = "INSERT INTO GameScores(id_tournament,Round,desk,id_player1,id_player2,score_player1,score_player2) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (id_tournament,Round,desk,id_player1,id_player2,score_player1,score_player2)
-        interact_db(query=query, query_type='commit')
+        Tournaments.insert_scores(id_tournament, Round, desk, id_player1, id_player2, score_player1, score_player2)
         flash(f'הניקוד הוזן בהצלחה!')
 
     # back to judgment
@@ -82,7 +77,7 @@ def delete_judgment_func(tournament_id):
     Round = request.form['Round']
     desk = request.form['desk']
 
-    query = 'DELETE FROM GameScores WHERE id_tournament="%s" and Round="%s" and desk="%s";' % (tournament_id,Round,desk)
-    interact_db(query=query, query_type='commit')
+    # delete scores
+    Tournaments.delete_scores(tournament_id,Round,desk)
     return redirect('/tournament/%s/judgment' % tournament_id)
 

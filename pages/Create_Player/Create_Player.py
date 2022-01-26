@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
-from utilities.db.interact_with_DB import interact_db
 from flask import request, redirect, flash
+from utilities.db_objects.Players import Players
 
 # Create_Player blueprint definition
 Create_Player = Blueprint('Create_Player', __name__,
@@ -26,8 +26,7 @@ def insert_player_func():
     school = request.form['school']
 
     # existing players
-    players_query = 'select id from Players;'
-    players_list = interact_db(query=players_query, query_type='fetch')
+    players_list = Players.get_players_id()
     players_list_int=[]
     for row in players_list:
         players_list_int.append(str(row.id))
@@ -37,8 +36,7 @@ def insert_player_func():
         flash(f'  שחקן מספר  {id}  כבר קיים במערכת...  ')
     else:
         # insert to DB
-        query = "insert into Players(id, first_name, last_name, level, age, school) values ('%s','%s','%s','%s','%s','%s'); " % (id, first_name, last_name, level, age, school)
-        interact_db(query=query, query_type='commit')
+        Players.insert_player(id, first_name, last_name, level, age, school)
         flash(f'השחקן נוסף בהצלחה!')
 
     # come back to Create_Player

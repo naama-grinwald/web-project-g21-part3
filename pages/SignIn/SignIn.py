@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template
 from flask import Flask, redirect, url_for , render_template, request , session ,  flash
-from utilities.db.interact_with_DB import interact_db
-
+from utilities.db_objects.Staff import Staff
 
 # SignIn blueprint definition
 SignIn = Blueprint('SignIn', __name__, static_folder='static', static_url_path='/SignIn', template_folder='templates')
@@ -19,7 +18,6 @@ def index():
         password = request.form['password']
         found = val_email_pas(user_email,password)
         if found:
-
             session['user_email'] = get_username(user_email)
             session['password'] = password
             return redirect('/main')
@@ -27,16 +25,13 @@ def index():
             return redirect('/')
 
 def val_email_pas(user_email,form_password):
-    #naama.grinwald@gmail.com 1234
     # list of all the users
-    users_query = 'select email from staff;'
-    users_list = interact_db(query=users_query, query_type='fetch')
+    users_list = Staff.get_staff_email()
     users_list_int = []
     for row in users_list:
         users_list_int.append(str(row.email))
     #get password from DB
-    user_password_query = "select password from staff where email='%s';" % user_email
-    user_password_db=interact_db(query=user_password_query, query_type='fetch')
+    user_password_db = Staff.get_staff_password(user_email)
     # validation:
     global found
     if str(user_email) not in users_list_int:
@@ -51,8 +46,7 @@ def val_email_pas(user_email,form_password):
 
 
 def get_username(user_email):
-    user_name_query = "select first_name from staff where email='%s';" % user_email
-    user_name_db = interact_db(query=user_name_query, query_type='fetch')
+    user_name_db = Staff.get_staff_name(user_email)
     return user_name_db[0][0]
 
 

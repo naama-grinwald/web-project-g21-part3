@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from utilities.db.interact_with_DB import interact_db
 from flask import request, redirect, flash
+from utilities.db_objects.Players import Players as P
 
 # Players blueprint definition
 Players = Blueprint('Players', __name__,
@@ -13,15 +14,13 @@ Players = Blueprint('Players', __name__,
 @Players.route('/Players')
 def Players_func():
     # get Players table
-    Players_query = 'select id, concat(first_name," ", last_name) AS name, level, age, school from Players;'
-    Players_table = interact_db(query=Players_query, query_type='fetch')
+    Players_table =P.get_players()
     return render_template('Players.html', Players_table=Players_table)
 
 
 @Players.route('/Players/delete_Players/<int:Players_id>')
 def delete_Players(Players_id):
-    query= "delete from Players where id='%s';" % Players_id
-    interact_db(query=query, query_type='commit')
+    P.delete_player(Players_id)
     flash('השחקן נמחק בהצלחה!')
     return redirect('/Players')
 
@@ -36,8 +35,7 @@ def update_player_func():
     school = request.form['school']
 
     # existing players
-    players_query = 'select id from Players;'
-    players_list = interact_db(query=players_query, query_type='fetch')
+    players_list = P.get_players()
     players_list_int = []
     for row in players_list:
         players_list_int.append(str(row.id))

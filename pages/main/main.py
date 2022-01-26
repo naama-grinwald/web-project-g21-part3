@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, url_for
-from utilities.db.interact_with_DB import interact_db
+from utilities.db_objects.Tournaments import Tournaments
 
 # main blueprint definition
 main = Blueprint('main', __name__,
@@ -11,9 +11,7 @@ main = Blueprint('main', __name__,
 # Routes
 @main.route('/main')
 def main_func():
-    query = 'select * from tournaments'
-    tournaments = interact_db(query=query, query_type='fetch')
-    print(tournaments)
+    tournaments = Tournaments.get_all_tournaments()
     return render_template('main.html', tournaments=tournaments)
 
 

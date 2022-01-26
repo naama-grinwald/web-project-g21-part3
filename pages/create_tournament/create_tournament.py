@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, redirect, request
 from utilities.db.interact_with_DB import interact_db
+from utilities.db_objects.Tournaments import Tournaments
 
 # create_tournament blueprint definition
 create_tournament = Blueprint('create_tournament', __name__,
@@ -25,17 +26,14 @@ def create_tournament_post_func():
     details = request.form['details']
 
     # insert to DB
-    query = "insert into tournaments(name,date,location,type,Season,details) values ('%s','%s','%s','%s','%s','%s'); " % (name,date,location,type,Season,details)
-    interact_db(query=query, query_type='commit')
-
+    Tournaments.create_tournament(name,date,location,type,Season,details)
     return redirect('/main')
 
 
 @create_tournament.route('/tournament/<int:tournament_id>/update_tournament', methods=['GET', 'POST'])
 def update_tournament_form_func(tournament_id):
     # get tournament table
-    id_query = 'select * from tournaments where id=%s;' % tournament_id
-    tournament = interact_db(query=id_query, query_type='fetch')[0]
+    tournament = Tournaments.get_tournament(tournament_id)[0]
     return render_template('create_tournament.html', tournament=tournament)
 
 @create_tournament.route('/tournament/<int:tournament_id>/update_tournament_route', methods=['POST'])
@@ -54,8 +52,8 @@ def update_tournament_func(tournament_id):
     zip_object = zip(fields, results)
     for field, result in zip_object:
         if result != "":
+           # Tournaments.update_tournament(field, result, tournament_id)
             query = "UPDATE tournaments SET %s='%s' WHERE id = '%s';" % (field, result, tournament_id)
-            print(query)
             interact_db(query=query, query_type='commit')
 
     return redirect('/tournament/%s' % tournament_id)
