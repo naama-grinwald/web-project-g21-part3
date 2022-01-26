@@ -48,4 +48,40 @@
         <h4 class="alert-change">{{ message }}</h4>
     {% endfor %}
 
+    <hr>
+
+    <h3>טבלת תוצאות</h3>
+
+    <div>
+        <table id="ResultsTable">
+        <tr>
+             <th> סבב </th>
+             <th>מספר שולחן</th>
+             <th>מספר שחקן 1</th>
+             <th>מספר שחקן 2</th>
+             <th>ניקוד שחקן 1</th>
+             <th>ניקוד שחקן 2</th>
+            <th></th>
+        </tr>
+
+        {% for row in scores %}
+        <tr>
+            <td> {{ row.Round }} </td>
+            <td> {{ row.desk }} </td>
+            <td> {{ row.id_player1 }}</td>
+            <td> {{ row.id_player2 }}</td>
+            <td> {{ row.score_player1 }} </td>
+            <td> {{ row.score_player2 }} </td>
+            <td>
+                <form action="/tournament/{{ tournament.id }}/judgment/delete_score" method="post" style="display: inline">
+                    <input type="hidden" name="Round" value="{{ row.Round }}">
+                    <input type="hidden" name="desk" value="{{ row.desk }}">
+                    <input id="delete" type="submit" value="מחק">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
 {% endblock %}

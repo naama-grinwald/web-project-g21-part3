@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/base.css">
+    <script src="{{url_for('navbar.static', filename='js/navbar.js')}}"></script>
     {% block page_head_extra %}{% endblock %}
 </head>
 
-<body>
-    <!--% include 'navbar.html' %}-->
-    <div style="background-color: var(--nav-color); height: 50px">
-    Navigation Bar
-    </div>
+<body onscroll="navbar()">
+    {% include 'navbar.html' %}
+
+
     {% block tohen %}{% endblock %}
-    <div style="background-color: var(--nav-color); height: 150px">
-    Footer
-    </div>
-    <!--% include 'footer.html' %}-->
+
+
+      {% include 'footer.html' %}
 </body>
 
 </html>

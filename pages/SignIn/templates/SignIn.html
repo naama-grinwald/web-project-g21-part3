@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="en">
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('SignIn.static', filename='css/SignIn.css') }}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>דף התחברות</title>
+  <script src="{{url_for('SignIn.static', filename='js/SignIn.js')}}"></script>
+
+  <style>
+    body {
+      background-image:url('{{url_for('SignIn.static', filename='media/background.jpeg')}}');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h1>התחברות</h1>
+    <form action="/SignIn" method="post">
+      <div class="user-box">
+        <label for="signIn_Email">כתובת דוא"ל:</label><br>
+        <input type="email" id="signIn_Email" name="user_email" required=""><br>
+
+      </div>
+      <div class="user-box">
+        <label for="signIn_password">סיסמא:</label><br>
+        <input type="password" id="signIn_password" name="password" required=""><br>
+
+      </div>
+      <div id="signInSumbit">
+        <input type="submit" id="signInSumbit" value="התחברות" >
+      </div>
+    </form>
+
+    {% for message in get_flashed_messages() %}
+        <h4 class="alert-change">{{ message }}</h4>
+    {% endfor %}
+  </div>
+
+</body>
+
+</html>

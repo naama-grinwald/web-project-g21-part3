@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="{{ url_for('navbar.static', filename='css/navbar.css') }}"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="{{url_for('navbar.static', filename='js/navbar.js')}}"> </script>
+
+<div class= "nav" id="navbar" >
+    <a class="nav_item" href="/main"> עמוד הבית</a>
+    <a class="nav_item" href="CreateGroup.html">יצירת קבוצות</a>
+    <a class="nav_item" href="Staff.html">ניהול צוות</a>
+    <a href="/logout" id="login">LogOut</a>
+    <div id="login">
+        היי {{ session.user_email }}!
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="navbar_res()">
+        <i class="fa fa-bars"></i>
+      </a>
+</div>

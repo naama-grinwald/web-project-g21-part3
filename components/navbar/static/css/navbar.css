@@ -1,0 +1,82 @@
+.nav {
+  background-color: rgb(211, 183, 147);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+#login {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav_item {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: rgb(216, 201, 187);
+  color: var(--black-color);
+}
+
+ /* Hide the link that should open and close the navbar on small screens */
+ .nav .icon {
+  display: none;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+ /*keep the navbar when scrolling down */
+.sticky {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
+ @media screen and (max-width: 600px) {
+    .nav a:not(:first-child) {display: none;}
+    .nav a.icon {
+      float: right;
+      display: block;
+      /*color:var(--button-color);*/
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+  }
+
+  /* The "responsive" class is added to the nav with JavaScript when the user clicks on the icon*/
+ @media screen and (max-width: 600px) {
+    .nav.responsive {position: fixed;}
+    .nav.responsive a.icon {
+      position: absolute;
+      color:var(--button-color);
+      right: 0;
+      top: 0;
+
+    }
+    .nav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
