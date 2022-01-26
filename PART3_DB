@@ -31,23 +31,22 @@ INSERT INTO tournaments(name,date,location,type,Season,details) VALUES ('ציר�
 
 # Staff Table
 create table Staff (
-    id       int auto_increment,
+    email    varchar(100) not null,
     first_name      varchar(100) not null,
     last_name       varchar(100) not null,
-    email    varchar(100) not null,
     phone    int          null,
     role varchar(100) not null,
     password varchar(100) not null,
 
     constraint Staff_pk
-        primary key (id)
+        primary key (email)
 );
 
-INSERT INTO staff(first_name, last_name, email, phone, role, password) VALUES ('נעמה', 'גרינוולד', 'naama.grinwald@gmail.com', 0505917191, 'מדריך', '1234');
+INSERT INTO staff(email, first_name, last_name, phone, role, password) VALUES ('naama.grinwald@gmail.com', 'נעמה', 'גרינוולד', 0505917191, 'מדריך', '1234');
 
 # Players Table
 create table Players (
-    id              int auto_increment,
+    id              int not null,
     first_name      varchar(100) not null,
     last_name       varchar(100) not null,
     level           int          not null,
@@ -58,8 +57,8 @@ create table Players (
         primary key (id)
 );
 
-INSERT INTO Players(first_name, last_name, level, age, school) VALUES ('אלון', 'ברינה', 5 , 10, 'עמית');
-INSERT INTO Players(first_name, last_name, level, age, school) VALUES ('יעל', 'אליאס', 3 , 14 , 'ניצנים');
+INSERT INTO Players(id, first_name, last_name, level, age, school) VALUES (1, 'אלון', 'ברינה', 2 , 10, 'עמית');
+INSERT INTO Players(id, first_name, last_name, level, age, school) VALUES (2, 'יעל', 'אליאס', 3 , 11 , 'ניצנים');
 
 # Game Scores Table
 CREATE TABLE GameScores(
