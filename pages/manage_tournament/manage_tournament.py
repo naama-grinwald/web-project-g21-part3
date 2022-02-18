@@ -2,20 +2,20 @@ from flask import Blueprint, render_template, redirect, request
 from utilities.db.interact_with_DB import interact_db
 from utilities.db_objects.Tournaments import Tournaments
 
-# create_tournament blueprint definition
-create_tournament = Blueprint('create_tournament', __name__,
+# manage_tournament blueprint definition
+manage_tournament = Blueprint('manage_tournament', __name__,
                   static_folder='static',
-                  static_url_path='/create_tournament',
+                  static_url_path='/manage_tournament',
                   template_folder='templates')
 
 
 # Routes
-@create_tournament.route('/create_tournament', methods=['GET'])
+@manage_tournament.route('/create_tournament', methods=['GET'])
 def create_tournament_func():
-    return render_template('create_tournament.html')
+    return render_template('manage_tournament.html')
 
 
-@create_tournament.route('/create_tournament_route', methods=['POST'])
+@manage_tournament.route('/create_tournament_route', methods=['POST'])
 def create_tournament_post_func():
     # get data
     name = request.form['name']
@@ -30,13 +30,13 @@ def create_tournament_post_func():
     return redirect('/main')
 
 
-@create_tournament.route('/tournament/<int:tournament_id>/update_tournament', methods=['GET', 'POST'])
+@manage_tournament.route('/tournament/<int:tournament_id>/update_tournament', methods=['GET', 'POST'])
 def update_tournament_form_func(tournament_id):
     # get tournament table
     tournament = Tournaments.get_tournament(tournament_id)[0]
-    return render_template('create_tournament.html', tournament=tournament)
+    return render_template('manage_tournament.html', tournament=tournament)
 
-@create_tournament.route('/tournament/<int:tournament_id>/update_tournament_route', methods=['POST'])
+@manage_tournament.route('/tournament/<int:tournament_id>/update_tournament_route', methods=['POST'])
 def update_tournament_func(tournament_id):
     # get data
     name = request.form['name']

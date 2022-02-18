@@ -1,5 +1,4 @@
 READY:
-
 headline
 main
 navbar
@@ -7,19 +6,17 @@ footer
 login
 judgment
 tournament
-create_tournament
-
-TODO:
-results: player name
-
+manage_tournament
+results
 staff: get table, update, delete staff & link from nav
 create_staff: form & add link (button) to dtaff
 players: get table, update, delete players & link from nav
 create_player: form & add link (button) to players
 
+
+TODO:
 attendance player-tournament?
 
 *write file
-*instractions: enoght js, validations, sql query
 *add data
 *db manager
