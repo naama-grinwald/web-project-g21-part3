@@ -1,7 +1,0 @@
-in pycharm terminal:
-
-git pull
-git add --all
-git commit -m "commit"
-git push
-git log (check "commit" is the last one)

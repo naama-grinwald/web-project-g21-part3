@@ -34,7 +34,6 @@
             <td> {{ Players.age }} </td>
             <td> {{ Players.school }} </td>
             <td>
-{#              <a href="{{url_for('Players.delete_Players_func', Players_email= Players.email)}}"> Delete</a>#}
                 <button id="removeButton" class="select" onclick="location.href='/Players/delete_Players/{{ Players.id }}'")>מחק</button>
             </td>
         </tr>
@@ -49,25 +48,23 @@
     </div>
 
     <h3 style="text-align: center">עידכון פרטי שחקן</h3>
-    <p style="text-align: center">הכנס/י פרטים בשדות שתרצה/י לעדכן:</p>
+    <h4 style="text-align: center">הכנס/י פרטים בשדות שתרצה/י לעדכן:</h4>
     <form action="/Players/update_player" method="post">
         <div class="upper">
             <label class='label' for="id"> מספר שחקן לעידכון:</label><br>
             <input type="number" class="field" name="id" placeholder="מספר שחקן" required><br>
-
-             <label class='label' for="name"> שם פרטי:</label><br>
-            <input type="text" class="field" name="name" placeholder="שם פרטי" ><br>
-
         </div>
         <div class="upper">
+            <label class='label' for="name"> שם פרטי:</label><br>
+            <input type="text" class="field" name="name" placeholder="שם פרטי" ><br>
+
             <label for="LastName"> שם משפחה:</label><br>
             <input type="text" class="field" name="LastName" placeholder="שם משפחה" ><br>
-
+        </div>
+        <div class="upper">
             <label class='label' for="level"> רמת השחקן:</label><br>
             <input type="number" class="field" name="level" placeholder="רמת השחקן" ><br>
 
-        </div>
-        <div class="upper">
             <label class='label' for="age"> גיל השחקן:</label><br>
             <input type="number" class="field" name="age" placeholder="גיל השחקן" ><br>
 
@@ -77,6 +74,7 @@
         <div class="submit">
             <input type="submit" value="עדכן ">
         </div>
+    <br>
     </form>
 
 {% endblock %}

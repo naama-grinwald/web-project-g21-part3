@@ -37,7 +37,7 @@
 }
 
 /*responsive web */
-@media only screen and (max-width:900px) {
+@media only screen and (max-width:1200px) {
 
     .header button {
         position: static;
@@ -47,9 +47,17 @@
     }
 
     .card {
-    text-align: center;
-    width:90%;
+        display: block;
+        position: static;
+        text-align: center;
+        width:90%;
     }
+
+    .container{
+        display: block;
+    }
+
+
 }
 
 

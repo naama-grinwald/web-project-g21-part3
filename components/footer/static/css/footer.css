@@ -9,7 +9,7 @@
     height:70px;
     background:var(--nav-color);
     margin-top: auto;
-overflow:auto;
+    overflow:auto;
   }
 
   body{
@@ -22,5 +22,4 @@ overflow:auto;
       height:50px;
     background:var(--nav-color);
     margin-top: auto;
-
   }
