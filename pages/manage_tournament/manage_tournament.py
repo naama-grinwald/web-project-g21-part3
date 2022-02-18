@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, redirect, request
-from utilities.db.interact_with_DB import interact_db
 from utilities.db_objects.Tournaments import Tournaments
 
 # manage_tournament blueprint definition
@@ -51,9 +50,7 @@ def update_tournament_func(tournament_id):
     results=[name,date,location,type,Season,details]
     zip_object = zip(fields, results)
     for field, result in zip_object:
-        if result != "":
-           # Tournaments.update_tournament(field, result, tournament_id)
-            query = "UPDATE tournaments SET %s='%s' WHERE id = '%s';" % (field, result, tournament_id)
-            interact_db(query=query, query_type='commit')
+       if result != "":
+           Tournaments.update_tournament(field, result, tournament_id)
 
     return redirect('/tournament/%s' % tournament_id)

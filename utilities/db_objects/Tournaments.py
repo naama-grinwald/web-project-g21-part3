@@ -16,15 +16,10 @@ class Tournaments:
         query = "insert into tournaments(name,date,location,type,Season,details) values (%s,%s,%s,%s,%s,%s);"
         return dbManager.commit(query,(name,date,location,type,Season,details))
 
-    #def update_tournament(self,field, result,tournament_id):
-     #   query = "UPDATE tournaments SET %s='%s' WHERE id =%s;" % (field, result,tournament_id)
-      #  print(query)
-       # print(type(field))
-       # print(type(result))
-       # print(type(tournament_id))
+    def update_tournament(self, field, result,tournament_id):
+        query = "UPDATE tournaments SET %s='%s' WHERE id ='%s';" % (field, result,tournament_id)
+        return dbManager.commit(query, (tournament_id))
 
-
-        #return dbManager.commit(query, (field, result, tournament_id))
     def get_results(self, id_tournament):
         query = 'select id_player, concat(P.first_name," ", P.last_name) AS name, score, ROW_NUMBER() OVER(ORDER BY score desc) RowNumber from(select id_player1 as id_player, sum(score_player1) as score from((select id_player1,score_player1 from gamescores where id_tournament=%s) union all (select id_player2,score_player2 from gamescores where id_tournament=%s)) as scores group by id_player1) as S join Players AS P ON S.id_player = P.id  order by Score desc;' % (id_tournament, id_tournament)
         return dbManager.fetch(query,(id_tournament))

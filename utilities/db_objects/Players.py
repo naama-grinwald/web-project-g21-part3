@@ -20,4 +20,8 @@ class Players:
         query = "delete from Players where id='%s';" % Players_id
         return dbManager.commit(query,(Players_id))
 
+    def update_player(self,field, result,id):
+        query = "UPDATE Players SET %s='%s' WHERE id ='%s';" % (field, result, id)
+        return dbManager.commit(query, (id))
+
 Players = Players()

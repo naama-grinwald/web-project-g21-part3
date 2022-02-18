@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template
-from utilities.db.interact_with_DB import interact_db
 from flask import request, redirect, flash
 from utilities.db_objects.Players import Players as P
 
@@ -45,24 +44,17 @@ def update_player_func():
         flash(f'  שחקן מספר  {id}  לא קיים במערכת...  ')
     else:
         # update DB
-        if first_name != "":
-            query = "UPDATE Players SET first_name = '%s' where id='%s' ; " % (first_name, id)
-            interact_db(query=query, query_type='commit')
-        if last_name != "":
-            query = "UPDATE Players SET last_name = '%s' where id='%s' ; " % (last_name, id)
-            interact_db(query=query, query_type='commit')
-        if level != "":
-            query = "UPDATE Players SET level = '%s' where id='%s' ; " % (level, id)
-            interact_db(query=query, query_type='commit')
-        if age != "":
-            query = "UPDATE Players SET age = '%s' where id='%s' ; " % (age, id)
-            interact_db(query=query, query_type='commit')
-        if school != "":
-            query = "UPDATE Players SET age = '%s' where id='%s' ; " % (age, id)
-            interact_db(query=query, query_type='commit')
+        fields=['first_name','last_name','level','age','school']
+        results=[first_name,last_name,level,age,school]
+        zip_object = zip(fields, results)
+        for field, result in zip_object:
+            if result != "":
+                P.update_player(field, result, id)
+
         if first_name == "" and last_name == "" and age == "" and level == "" and school == "":
             flash(f'לא הוכנסו פרטים לעידכון!')
         else:
             flash(f' השדות עודכנו בהצלחה!')
+
         # come back to Create_Player
-        return redirect('/Players')
+    return redirect('/Players')

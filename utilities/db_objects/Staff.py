@@ -24,9 +24,12 @@ class Staff:
         query = "insert into Staff(email, first_name, last_name, phone, role, password) values (%s,%s,%s,%s,%s,%s); "
         return dbManager.commit(query,(email, first_name, last_name, phone, role, password))
 
-
     def delete_staff(self, email):
         query = "delete from staff where email='%s';" % email
+        return dbManager.commit(query, (email))
+
+    def update_staff(self, field, result,email):
+        query = "UPDATE staff SET %s='%s' WHERE email ='%s';" % (field, result,email)
         return dbManager.commit(query, (email))
 
 Staff = Staff()

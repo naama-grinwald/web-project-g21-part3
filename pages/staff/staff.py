@@ -1,8 +1,6 @@
 from flask import Blueprint, render_template
-from utilities.db.interact_with_DB import interact_db
 from flask import request, redirect, flash
 from utilities.db_objects.Staff import Staff
-
 
 # staff blueprint definition
 staff = Blueprint('staff', __name__,
@@ -38,8 +36,7 @@ def update_staff_func():
     password = request.form['staffPassword']
 
     # existing staff
-    staff_query = 'select email from Staff;'
-    staff_list = interact_db(query=staff_query, query_type='fetch')
+    staff_list = Staff.get_staff_email()
     staff_list_emails=[]
     for row in staff_list:
         staff_list_emails.append(str(row.email))
@@ -49,24 +46,17 @@ def update_staff_func():
         flash(f'  האימייל  {email}  לא קיים במערכת...  ')
     else:
         # update DB
-        if first_name != "":
-            query = "UPDATE staff SET first_name = '%s' where email='%s' ; " % (first_name, email)
-            interact_db(query=query, query_type='commit')
-        if last_name != "":
-            query = "UPDATE staff SET last_name = '%s' where email='%s' ; " % (last_name, email)
-            interact_db(query=query, query_type='commit')
-        if phone != "":
-            query = "UPDATE staff SET phone = '%s' where email='%s' ; " % (phone, email)
-            interact_db(query=query, query_type='commit')
-        if role != "":
-            query = "UPDATE staff SET role = '%s' where email='%s' ; " % (role, email)
-            interact_db(query=query, query_type='commit')
-        if password != "":
-            query = "UPDATE staff SET password = '%s' where email='%s' ; " % (password, email)
-            interact_db(query=query, query_type='commit')
+        fields = ['first_name','last_name','phone','role','password']
+        results =  [first_name,last_name,phone,role,password]
+        zip_object = zip(fields, results)
+        for field, result in zip_object:
+            if result != "":
+                Staff.update_staff(field, result, email)
+
         if first_name == "" and last_name == "" and phone == "" and role == "" and password == "":
             flash(f'לא הוכנסו פרטים לעידכון!')
         else:
             flash(f' השדות עודכנו בהצלחה!')
+
         # come back to Create_Player
         return redirect('/staff')
